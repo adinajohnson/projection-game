@@ -25,10 +25,20 @@ Game.create = function(){
     text.inputEnabled = true;
     text.events.onInputUp.add(Game.sendSmallerClick, this);
 
-    var text = game.add.text(100, 1000, "bigger", { font: "20px Arial", fill: "#000000", align: "left" });
+    var text = game.add.text(150, 1000, "bigger", { font: "20px Arial", fill: "#000000", align: "left" });
     text.anchor.set(0.5);
     text.inputEnabled = true;
     text.events.onInputUp.add(Game.sendBiggerClick, this);
+
+    var text = game.add.text(250, 1000, "less red", { font: "20px Arial", fill: "#000000", align: "left" });
+    text.anchor.set(0.5);
+    text.inputEnabled = true;
+    text.events.onInputUp.add(Game.sendLessRedClick, this);
+
+    var text = game.add.text(350, 1000, "more red", { font: "20px Arial", fill: "#000000", align: "left" });
+    text.anchor.set(0.5);
+    text.inputEnabled = true;
+    text.events.onInputUp.add(Game.sendMoreRedClick, this);
 
     Client.askNewPlayer();
 };
@@ -46,44 +56,27 @@ Game.sendSmallerClick = function(pointer) {
     Client.sendSmallerClick();
 }
 
+Game.sendMoreRedClick = function(pointer) {
+    Client.sendMoreRedClick();
+}
+
+Game.sendLessRedClick = function(pointer) {
+    Client.sendLessRedClick();
+}
+
 Game.addNewPlayer = function(id,x,y,z,w,color){    
     Game.playerMap[id] = game.add.graphics();
     Game.playerMap[id].beginFill(color, 1);
     Game.playerMap[id].drawCircle(x, y, w);
-    //Game.playerMap[id].defaultFillColor = 0x000000;
-
 };
 
-Game.movePlayer = function(id,x,y,z,w,color){
-    //var player = Game.playerMap[id];
+Game.changePlayer = function(id,x,y,z,w,color){
     Game.playerMap[id].destroy()
     Game.playerMap[id] = game.add.graphics();
     player = Game.playerMap[id]
     player.beginFill(color, 1);
     player.drawCircle(x, y, w);
-    /*
-    var distance = Phaser.Math.distance(player.x,player.y,x,y);
-    var tween = game.add.tween(player);
-    var duration = distance*2;
-    tween.to({x:x,y:y}, duration);
-    tween.start();*/
 };
-
-Game.biggerPlayer = function(id,x,y,z,w,color) {
-    Game.playerMap[id].destroy()
-    Game.playerMap[id] = game.add.graphics();
-    player = Game.playerMap[id]
-    player.beginFill(0x000000, 1);
-    player.drawCircle(x, y, w);
-}
-
-Game.smallerPlayer = function(id,x,y,z,w,color) {
-    Game.playerMap[id].destroy()
-    Game.playerMap[id] = game.add.graphics();
-    player = Game.playerMap[id]
-    player.beginFill(color, 1);
-    player.drawCircle(x, y, w);
-}
 
 Game.removePlayer = function(id){
     Game.playerMap[id].destroy();

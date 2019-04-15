@@ -26,6 +26,14 @@ Client.sendSmallerClick = function(){
     Client.socket.emit('smallerClick');
 };
 
+Client.sendMoreRedClick = function(){
+    Client.socket.emit('moreRedClick');
+};
+
+Client.sendLessRedClick = function(){
+    Client.socket.emit('lessRedClick');
+};
+
 Client.socket.on('newplayer',function(data){
     Game.addNewPlayer(data.id,data.x,data.y, data.z, data.w, data.color);
 });
@@ -35,16 +43,8 @@ Client.socket.on('allplayers',function(data){
         Game.addNewPlayer(data[i].id,data[i].x,data[i].y,data[i].z,data[i].w,data[i].color);
     }
 
-    Client.socket.on('move',function(data){
-        Game.movePlayer(data.id,data.x,data.y, data.z, data.w, data.color);
-    });
-
-    Client.socket.on('bigger',function(data){
-        Game.biggerPlayer(data.id,data.x,data.y, data.z, data.w, data.color);
-    });
-
-    Client.socket.on('smaller',function(data){
-        Game.smallerPlayer(data.id,data.x,data.y, data.z, data.w, data.color);
+    Client.socket.on('change',function(data){
+        Game.changePlayer(data.id,data.x,data.y, data.z, data.w, data.color);
     });
 
     Client.socket.on('remove',function(id){
