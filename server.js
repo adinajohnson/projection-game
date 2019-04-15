@@ -26,7 +26,7 @@ io.on('connection',function(socket){
             y: 0,
             z: 0,
             w: 20,
-            color: 111111
+            color: 000000
         };
         socket.emit('allplayers',getAllPlayers());
         socket.broadcast.emit('newplayer',socket.player);
