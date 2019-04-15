@@ -40,6 +40,26 @@ Game.create = function(){
     text.inputEnabled = true;
     text.events.onInputUp.add(Game.sendMoreRedClick, this);
 
+    var text = game.add.text(250, 1100, "less green", { font: "20px Arial", fill: "#000000", align: "left" });
+    text.anchor.set(0.5);
+    text.inputEnabled = true;
+    text.events.onInputUp.add(Game.sendLessGreenClick, this);
+
+    var text = game.add.text(350, 1100, "more green", { font: "20px Arial", fill: "#000000", align: "left" });
+    text.anchor.set(0.5);
+    text.inputEnabled = true;
+    text.events.onInputUp.add(Game.sendMoreGreenClick, this);
+
+    var text = game.add.text(250, 1200, "less blue", { font: "20px Arial", fill: "#000000", align: "left" });
+    text.anchor.set(0.5);
+    text.inputEnabled = true;
+    text.events.onInputUp.add(Game.sendLessBlueClick, this);
+
+    var text = game.add.text(350, 1200, "more blue", { font: "20px Arial", fill: "#000000", align: "left" });
+    text.anchor.set(0.5);
+    text.inputEnabled = true;
+    text.events.onInputUp.add(Game.sendMoreBlueClick, this);
+
     Client.askNewPlayer();
 };
 
@@ -62,6 +82,22 @@ Game.sendMoreRedClick = function(pointer) {
 
 Game.sendLessRedClick = function(pointer) {
     Client.sendLessRedClick();
+}
+
+Game.sendMoreGreenClick = function(pointer) {
+    Client.sendMoreGreenClick();
+}
+
+Game.sendLessGreenClick = function(pointer) {
+    Client.sendLessGreenClick();
+}
+
+Game.sendMoreBlueClick = function(pointer) {
+    Client.sendMoreBlueClick();
+}
+
+Game.sendLessBlueClick = function(pointer) {
+    Client.sendLessBlueClick();
 }
 
 Game.addNewPlayer = function(id,x,y,z,w,color){    

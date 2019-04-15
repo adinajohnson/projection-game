@@ -34,6 +34,22 @@ Client.sendLessRedClick = function(){
     Client.socket.emit('lessRedClick');
 };
 
+Client.sendMoreGreenClick = function(){
+    Client.socket.emit('moreGreenClick');
+};
+
+Client.sendLessGreenClick = function(){
+    Client.socket.emit('lessGreenClick');
+};
+
+Client.sendMoreBlueClick = function(){
+    Client.socket.emit('moreBlueClick');
+};
+
+Client.sendLessBlueClick = function(){
+    Client.socket.emit('lessBlueClick');
+};
+
 Client.socket.on('newplayer',function(data){
     Game.addNewPlayer(data.id,data.x,data.y, data.z, data.w, data.color);
 });

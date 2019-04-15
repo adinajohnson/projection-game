@@ -56,7 +56,7 @@ io.on('connection',function(socket){
             i = socket.player.color.toString();
             new_color = (hexToR(i)+1).toString(16)+hexToG(i).toString(16)+hexToB(i).toString(16);
             socket.player.color = new_color;
-            //console.log(new_color);
+            console.log(new_color);
             io.emit('change',socket.player);
         });
 
@@ -64,7 +64,45 @@ io.on('connection',function(socket){
             //console.log('less red'+socket.player.w);
             i = socket.player.color.toString();
             new_color = (hexToR(i)-1).toString(16)+hexToG(i).toString(16)+hexToB(i).toString(16);
-            //console.log(new_color);
+            console.log(new_color);
+            socket.player.color = new_color;
+            io.emit('change',socket.player);
+        });
+
+        socket.on('moreGreenClick',function(){
+            //console.log('more red'+socket.player.w);
+            //rgb = hexToRgb(socket.player.color)
+            i = socket.player.color.toString();
+            new_color = hexToR(i).toString(16)+(hexToG(i)+1).toString(16)+hexToB(i).toString(16);
+            socket.player.color = new_color;
+            console.log(new_color);
+            io.emit('change',socket.player);
+        });
+
+        socket.on('lessGreenClick',function(){
+            //console.log('less red'+socket.player.w);
+            i = socket.player.color.toString();
+            new_color = hexToR(i).toString(16)+(hexToG(i)-1).toString(16)+hexToB(i).toString(16);
+            console.log(new_color);
+            socket.player.color = new_color;
+            io.emit('change',socket.player);
+        });
+
+        socket.on('moreBlueClick',function(){
+            //console.log('more red'+socket.player.w);
+            //rgb = hexToRgb(socket.player.color)
+            i = socket.player.color.toString();
+            new_color = hexToR(i).toString(16)+hexToG(i).toString(16)+(hexToB(i)+1).toString(16);
+            socket.player.color = new_color;
+            console.log(new_color);
+            io.emit('change',socket.player);
+        });
+
+        socket.on('lessBlueClick',function(){
+            //console.log('less red'+socket.player.w);
+            i = socket.player.color.toString();
+            new_color = hexToR(i).toString(16)+hexToG(i).toString(16)+(hexToB(i)-1).toString(16);
+            console.log(new_color);
             socket.player.color = new_color;
             io.emit('change',socket.player);
         });
