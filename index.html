@@ -4,10 +4,42 @@
     <meta charset="UTF-8">
     <script src="/socket.io/socket.io.js"></script>
     <script type="text/javascript" src="js/phaser.min.js"></script>
+    <script type="text/javascript" src="js/qrcode-js/qrcode.min.js"></script>
     <title>projection game</title>
+
+<style>
+#container {
+    width:1700px;
+    overflow:hidden;
+}
+
+#game {
+    /*position: absolute;*/
+    float: left;
+}
+
+#links {
+    float:left;
+    padding:15px;
+    margin-top:100px;
+}
+
+</style>
 </head>
 <body>
+    <div id="container">
+    
+
     <div id='game'></div>
+    <div id="links">
+    <div id="qrcode"></div>
+    <script type="text/javascript">
+        new QRCode(document.getElementById("qrcode"), "https://projection-game.herokuapp.com/");
+    </script>
+    <div id="url">
+    projection-game.herokuapp.com
+    </div></div>
+</div>
 </body>
 <script src="js/game.js" type="text/javascript"></script>
 <script src="js/main.js" type="text/javascript"></script>

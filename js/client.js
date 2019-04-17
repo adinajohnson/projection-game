@@ -26,28 +26,36 @@ Client.sendSmallerClick = function(){
     Client.socket.emit('smallerClick');
 };
 
-Client.sendMoreRedClick = function(){
-    Client.socket.emit('moreRedClick');
+Client.sendRedClick = function(){
+    Client.socket.emit('redClick');
 };
 
-Client.sendLessRedClick = function(){
-    Client.socket.emit('lessRedClick');
+Client.sendOrangeClick = function(){
+    Client.socket.emit('orangeClick');
 };
 
-Client.sendMoreGreenClick = function(){
-    Client.socket.emit('moreGreenClick');
+Client.sendYellowClick = function(){
+    Client.socket.emit('yellowClick');
 };
 
-Client.sendLessGreenClick = function(){
-    Client.socket.emit('lessGreenClick');
+Client.sendGreenClick = function(){
+    Client.socket.emit('greenClick');
 };
 
-Client.sendMoreBlueClick = function(){
-    Client.socket.emit('moreBlueClick');
+Client.sendBlueClick = function(){
+    Client.socket.emit('blueClick');
 };
 
-Client.sendLessBlueClick = function(){
-    Client.socket.emit('lessBlueClick');
+Client.sendPurpleClick = function(){
+    Client.socket.emit('purpleClick');
+};
+
+Client.sendBlackClick = function(){
+    Client.socket.emit('blackClick');
+};
+
+Client.sendWhiteClick = function(){
+    Client.socket.emit('whiteClick');
 };
 
 Client.socket.on('newplayer',function(data){
@@ -56,11 +64,11 @@ Client.socket.on('newplayer',function(data){
 
 Client.socket.on('allplayers',function(data){
     for(var i = 0; i < data.length; i++){
-        Game.addNewPlayer(data[i].id,data[i].x,data[i].y,data[i].z,data[i].w,data[i].color);
+        Game.addNewPlayer(data[i].id,data[i].x,data[i].y,data[i].w,data[i].color);
     }
 
     Client.socket.on('change',function(data){
-        Game.changePlayer(data.id,data.x,data.y, data.z, data.w, data.color);
+        Game.changePlayer(data.id,data.x,data.y, data.w, data.color);
     });
 
     Client.socket.on('remove',function(id){
